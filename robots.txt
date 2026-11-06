@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# PENDIENTE AL PUBLICAR: añadir la línea Sitemap con el dominio definitivo.
+# Ejemplo: Sitemap: https://dominio.com/sitemap.xml

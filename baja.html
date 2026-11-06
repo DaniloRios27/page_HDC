@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0c2b4d">
+  <title>Baja de comunicaciones | HDC Gestión Biomédica</title>
+  <meta name="description" content="Confirma la baja de las comunicaciones comerciales de HDC Gestión Biomédica.">
+  <link rel="icon" href="assets/logo/hdc-dark.svg" type="image/svg+xml">
+
+  <!-- CONFIGURAR AL DESPLEGAR:
+       Reemplaza REEMPLAZAR_WEB_APP por la URL /exec del Web App de Apps Script.
+       Debe ser la misma URL que se configure en UnsubscribeBaseURL. -->
+  <meta name="unsubscribe-endpoint" content="https://script.google.com/macros/s/REEMPLAZAR_WEB_APP/exec">
+
+  <style>
+    @font-face {
+      font-family: "Satoshi";
+      src: url("assets/fonts/Satoshi-Variable.woff2") format("woff2");
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --navy: #0c2b4d;
+      --blue: #124071;
+      --teal: #0191b3;
+      --cyan: #3abfde;
+      --ice: #e6f5fc;
+      --ground: #f4fafc;
+      --muted: #526b7d;
+      --line: #cfe2ea;
+      --font-body: "Satoshi", "Segoe UI", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(58, 191, 222, 0.18), transparent 32rem),
+        var(--ground);
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: min(100% - 2.5rem, 620px);
+      margin: 0 auto;
+      padding: 2.5rem 0 3rem;
+    }
+
+    .brand {
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .brand img {
+      display: block;
+      width: 190px;
+      height: auto;
+    }
+
+    .card {
+      padding: clamp(1.5rem, 5vw, 2.75rem);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 18px 45px rgba(12, 43, 77, 0.09);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.75rem, 5vw, 2.25rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      color: #294761;
+      font-size: 0.98rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .notice {
+      margin: 0 0 1.25rem;
+      padding: 0.85rem 1rem;
+      border-radius: 9px;
+      font-size: 0.9rem;
+    }
+
+    .notice--error {
+      background: #fff1f0;
+      border: 1px solid #f0b8b4;
+      color: #8a1c1c;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.85rem 1.35rem;
+      border: 0;
+      border-radius: 8px;
+      background: var(--navy);
+      color: #ffffff;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 160ms ease;
+    }
+
+    button:hover { background: var(--blue); }
+    button:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+    .cancel {
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .cancel:hover { text-decoration: underline; }
+
+    .foot {
+      margin: 2rem 0 0;
+      color: #71889a;
+      font-size: 0.72rem;
+      text-align: center;
+    }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="brand" href="index.html" aria-label="HDC Gestión Biomédica, inicio">
+      <img src="assets/logo/hdc-dark.svg" alt="HDC by Grupo Gess" width="730" height="341">
+    </a>
+
+    <section class="card" aria-labelledby="titulo-baja">
+      <p class="eyebrow">COMUNICACIONES HDC</p>
+      <h1 id="titulo-baja">Confirmar baja</h1>
+
+      <p>Si confirmas, no volverás a recibir correos comerciales de HDC Gestión Biomédica en la dirección a la que llegó este mensaje.</p>
+      <p class="muted">Solo usaremos este dato para registrar tu solicitud.</p>
+
+      <div id="error" class="notice notice--error" role="alert" hidden></div>
+
+      <form id="unsub-form" method="post" action="https://script.google.com/macros/s/REEMPLAZAR_WEB_APP/exec">
+        <input type="hidden" name="id" id="contacto-id" value="">
+        <input type="hidden" name="t" id="token" value="">
+        <input type="hidden" name="accion" value="confirmar">
+
+        <div class="actions">
+          <button type="submit">Confirmar baja</button>
+          <a class="cancel" href="index.html">No, mantener la suscripción</a>
+        </div>
+      </form>
+
+      <noscript>
+        <p class="notice notice--error">Este formulario necesita JavaScript. También puedes responder al correo original con la palabra BAJA.</p>
+      </noscript>
+    </section>
+
+    <p class="foot">HDC Gestión Biomédica · HDC by Grupo Gess · Arauca · Casanare · Boyacá</p>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var id = (params.get('id') || '').trim();
+      var token = (params.get('t') || '').trim();
+      var form = document.getElementById('unsub-form');
+      var error = document.getElementById('error');
+      var endpoint = document.querySelector('meta[name="unsubscribe-endpoint"]').content;
+
+      function showError(message) {
+        error.textContent = message;
+        error.hidden = false;
+        form.hidden = true;
+      }
+
+      if (!id || !token) {
+        showError('Este enlace está incompleto. Abre el enlace que recibiste en el correo original.');
+        return;
+      }
+
+      document.getElementById('contacto-id').value = id;
+      document.getElementById('token').value = token;
+      form.action = endpoint;
+
+      if (endpoint.indexOf('REEMPLAZAR_WEB_APP') !== -1) {
+        showError('El formulario aún no está conectado. Escribe al correo de contacto para solicitar la baja.');
+        return;
+      }
+
+      form.addEventListener('submit', function () {
+        var button = form.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = 'Registrando…';
+      });
+    }());
+  </script>
+</body>
+</html>
